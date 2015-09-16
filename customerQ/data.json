@@ -1,0 +1,22 @@
+[{
+  "name":"Customer 1",
+  "status":false,
+  "account":"1234567"
+},
+  {
+    "name":"Customer 2",
+    "status":false,
+    "account":"1234568"
+  },
+  {
+    "name":"Customer 3",
+    "status":false,
+    "account":"1234569"
+  },
+  {
+    "name":"Customer 4",
+    "status":false,
+    "account":"1234560"
+  }
+
+]

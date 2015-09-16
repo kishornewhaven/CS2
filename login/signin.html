@@ -1,0 +1,30 @@
+<div class="col-md-5 well" ng-controller="SignInCtrl">
+    <form name="myForm" novalidate>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email"  name="userName" class="form-control" ng-model="signin.username" id="exampleInputEmail1" placeholder="Enter email" required>
+            <div class="error"
+                 ng-show="myForm.userName.$invalid && myForm.userName.$dirty">
+                <span ng-show="myForm.userName.$error.email"> Please enter admin@gmail.com to login </span>
+                <span ng-show="myForm.userName.$error.required"> Please enter a value </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="passWord" class="form-control" ng-model="signin.password" id="exampleInputPassword1" placeholder="Password" required>
+            <div class="error"
+                 ng-show="myForm.passWord.$invalid && myForm.passWord.$dirty">
+
+                <span ng-show="myForm.passWord.$error.required"> Please enter a value </span>
+            </div>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Remember me
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-click="signIn(signin)"  ng-disabled="myForm.$invalid">Sign In</button>
+        <a href="#register">Register</a>
+    </form>
+</div>

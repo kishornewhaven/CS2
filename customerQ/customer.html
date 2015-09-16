@@ -1,0 +1,81 @@
+
+<div ng-controller="QueueCtrl">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="well">
+                    <h1>
+                        Customer Queue <span class="label label-default" ng-class="count()">{{remainingQ()}}</span>
+                    </h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Name" ng-model="newCustomer.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="account">Account</label>
+                            <input type="text" class="form-control" id="account" placeholder="Enter Account" ng-model="newCustomer.account">
+                        </div>
+                        <div class="form-group">
+                            <label for="reason">Reason</label>
+                            <input type="text" class="form-control" id="reason" placeholder="Reason for Visit" ng-model="newCustomer.reason">
+                        </div>
+
+                        <button type="submit" class="btn btn-default" ng-click="addCustomer(newCustomer)">Add to Queue</button>
+                    </form>
+
+
+                    <script type="text/ng-template" id="myModalContent.html">
+                        <div class="modal-header">
+                            <h3 class="modal-title">{{customername}}<small>(Dummy - Just to demonstrate Modal Window)</small></h3>
+                        </div>
+                        <div class="modal-body" ng-controller="DatepickerDemoCtrl">
+                            <p>My Content</p>
+                            <p class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-08-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                            </p>
+                            Selected: <b>{{ dt | date:'dd/MM/yyyy' }}</b>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" ng-click="ok()">OK</button>
+                            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                        </div>
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+               <div class="well">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>S NO</th>
+                        <th>Name</th>
+                        <th>Account</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="customer in customers | orderBy:'status'" ng-class="{'success':customer.status}">  <!--ng-click="selectCustomer(customer)"-->
+                        <td>{{$index + 1}}</td>
+                        <td>{{customer.name}}</td>
+                        <td>{{customer.account}}</td>
+                        <td>{{customer.date | date:'dd/MM/yyyy'}}</td>
+                        <td>
+                            <angular-actions permission="role" data="customer"></angular-actions>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+</html>
